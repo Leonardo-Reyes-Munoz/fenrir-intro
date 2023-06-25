@@ -38,7 +38,7 @@ messageForm.addEventListener("submit", (event) => {
   const usersEmail = event.target.usersEmail.value;
   let usersMessage = event.target.usersMessage.value;
   const newMessage = document.createElement("li");
-  newMessage.innerHTML = `<a href='mailto:${usersEmail}'>${usersName} </a><br /><span>${usersMessage}</span><br />`;
+  newMessage.innerHTML = `<a href='mailto:${usersEmail}'>${usersName} </a><p>${usersMessage}</p>`;
 
   //toggles messageSection to default display behavior when appending message
   messages.parentNode.style.display = "";
@@ -64,83 +64,103 @@ messageForm.addEventListener("submit", (event) => {
 
 // Event listener to execute remove, edit, and save buttons.
 messages.addEventListener("click", (e) => {
-  const button = e.target.innerText;
-  console.log(e.target.parentNode);
-  //button actions stored in a variable object
-  const buttonActions = {
-    remove: () => {
-      const entry = e.target.parentNode;
-      entry.remove();
-      if (lis.length === 0) {
-        // toggles messages to display of "none" if no messages
-        messages.parentNode.style.display = "none";
-      }
-    },
-    edit: () => {
-      // edits usersName
-      const editedUsersName = document.createElement("input");
-      const anchor = e.target.parentNode.querySelector("a");
-      editedUsersName.type = "text";
-      editedUsersName.setAttribute("id", "editedUsersName");
-      editedUsersName.value = anchor.textContent;
-      e.target.parentNode.insertBefore(editedUsersName, anchor);
-      // anchor.remove();
+  if (e.target.type === "button") {
+    const button = e.target.innerText;
+    const entry = e.target.parentNode;
+    const allButtons = document.getElementsByTagName("button");
 
-      // edits usersEmail
-      const editedUsersEmail = document.createElement("input");
-      const email = e.target.parentNode.querySelector("a").getAttribute("href");
-      editedUsersEmail.type = "text";
-      editedUsersEmail.setAttribute("id", "editedUsersEmail");
-      editedUsersEmail.value = email;
-      e.target.parentNode.insertBefore(editedUsersEmail, anchor);
-      anchor.remove();
+    //button actions stored in a variable object
+    const buttonActions = {
+      remove: () => {
+        entry.remove();
+        if (lis.length === 0) {
+          // toggles messages to display of "none" if no messages
+          messages.parentNode.style.display = "none";
+        }
+      },
+      edit: () => {
+        const entryAnchorTag = entry.querySelector("a");
+        const entryMessage = entry.querySelector("p");
+        const breakSpace = document.createElement("br");
+        const breakSpace2 = document.createElement("br");
+        const breakSpace3 = document.createElement("br");
 
-      // edits usersMessage
-      const editedUsersMessage = document.createElement("input");
-      const span = e.target.parentNode.querySelector("span");
-      editedUsersMessage.type = "text";
-      editedUsersMessage.setAttribute("id", "editedUsersMessage");
-      editedUsersMessage.value = span.textContent;
-      e.target.parentNode.insertBefore(editedUsersMessage, span);
-      span.remove();
+        // edits usersName
+        const editingNameBox = document.createElement("input");
+        const editingNameLabel = document.createElement("label");
+        editingNameLabel.innerText = "Name:";
+        editingNameBox.type = "text";
+        editingNameBox.setAttribute("class", "editedUsersName");
+        editingNameBox.value = entryAnchorTag.textContent;
+        entry.insertBefore(editingNameBox, entryAnchorTag);
+        entry.insertBefore(editingNameLabel, editingNameBox);
 
-      const buttons = document.getElementsByTagName("button");
-      for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style.display = "none";
-      }
-      e.target.innerText = "save";
-      e.target.style.display = "";
-    },
-    save: () => {
-      const parentNode = e.target.parentNode;
-      console.log(parentNode);
-      // saves users new name
-      const savedUsersName = document.createElement("a");
-      const updatedUsersName = document.getElementById("editedUsersName");
-      savedUsersName.textContent = updatedUsersName.value;
+        // edits usersMessage
+        const editingMessageBox = document.createElement("textarea");
+        const editingMessageBoxLabel = document.createElement("label");
+        editingMessageBoxLabel.innerText = "Message:";
+        editingMessageBox.innerText = entryMessage.textContent;
+        editingMessageBox.setAttribute("class", "editedUsersMessage");
+        entry.insertBefore(editingMessageBox, entryMessage);
+        entry.insertBefore(editingMessageBoxLabel, editingMessageBox);
+        entry.insertBefore(breakSpace, entryMessage);
+        entryMessage.remove();
 
-      // saves users new email
-      const selectEmail = document.getElementById("editedUsersEmail");
-      const updatedUsersEmail =
-        document.getElementById("editedUsersEmail").value;
-      savedUsersName.setAttribute("href", updatedUsersEmail);
-      e.target.parentNode.insertBefore(savedUsersName, updatedUsersName);
-      updatedUsersName.remove();
-      selectEmail.remove();
+        // edits usersEmail
+        const editingEmailBox = document.createElement("input");
+        const editingEmailLabel = document.createElement("label");
+        editingEmailLabel.innerText = "Email:";
+        let email = entry.querySelector("a").getAttribute("href");
+        //regular expression to remove "mailto:" from email
+        email = email.replace(/mailto:/i, "");
+        editingEmailBox.type = "email";
+        editingEmailBox.setAttribute("class", "editedUsersEmail");
+        editingEmailBox.value = email;
 
-      // saves users new message
-      const savedUsersMessage = document.createElement("span");
-      const updatedUsersMessage = document.getElementById("editedUsersMessage");
-      savedUsersMessage.textContent = updatedUsersMessage.value;
-      e.target.parentNode.insertBefore(savedUsersMessage, updatedUsersMessage);
-      updatedUsersMessage.remove();
+        entry.insertBefore(editingEmailBox, editingMessageBoxLabel);
+        entry.insertBefore(editingEmailLabel, editingEmailBox);
+        entry.insertBefore(breakSpace2, editingMessageBoxLabel);
+        entry.insertBefore(breakSpace3, entryAnchorTag);
+        entryAnchorTag.remove();
 
-      e.target.innerText = "edit";
-      const buttons = document.getElementsByTagName("button");
-      for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style.display = "";
-      }
-    },
-  };
-  buttonActions[button]();
+        for (let i = 0; i < allButtons.length; i++) {
+          allButtons[i].disabled = true;
+        }
+        e.target.innerText = "save";
+        e.target.disabled = false;
+      },
+      save: () => {
+        const newLi = document.createElement("li");
+
+        const editedUsersName = entry.querySelector(".editedUsersName").value;
+        const editedUsersEmail = entry.querySelector(".editedUsersEmail").value;
+        let editedUsersMessage = entry.querySelector(
+          ".editedUsersMessage"
+        ).value;
+        newLi.innerHTML = `<a href='mailto:${editedUsersEmail}'>${editedUsersName} </a><p>${editedUsersMessage}</p>`;
+
+        //creates a remove button
+        const removeButton = document.createElement("button");
+        removeButton.innerText = "remove";
+        removeButton.type = "button";
+
+        //creates an edit button
+        const editButton = document.createElement("button");
+        editButton.innerText = "edit";
+        editButton.type = "button";
+
+        newLi.appendChild(removeButton);
+        newLi.appendChild(editButton);
+
+        messages.insertBefore(newLi, entry);
+        e.target.innerText = "edit";
+        entry.remove();
+
+        for (let i = 0; i < allButtons.length; i++) {
+          allButtons[i].disabled = false;
+        }
+      },
+    };
+    buttonActions[button](e);
+  }
 });
