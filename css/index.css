@@ -1,0 +1,113 @@
+body {
+  background: url(../img/seattle.jpg) no-repeat center center/cover;
+  height: 100vh;
+  background-color: black;
+
+  font-family: "Ysabeau Infant", sans-serif;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+#name {
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+}
+
+#page-wrapper {
+  background-color: rgba(0, 0, 0, 0.805);
+  color: whitesmoke;
+  width: 80%;
+  max-width: 75ch;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+#profile-picture {
+  border-radius: 50%;
+  margin: 1em;
+  width: 30%;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 4em;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+/* Basic form styling */
+
+input,
+textarea {
+  appearance: none;
+  font-family: inherit;
+  font-size: 100%;
+  padding: 0.3em;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  border-radius: 1em;
+}
+
+button {
+  appearance: none;
+  font-family: inherit;
+  font-size: 100%;
+  padding: 0.3em;
+  margin: 0;
+  width: 25%;
+  border-radius: 1em;
+  border-color: rgba(0, 0, 0, 0.194);
+}
+
+#message-section {
+  background-color: whitesmoke;
+  border-radius: 2em;
+  color: black;
+  padding: 2em;
+  margin-top: 2em;
+}
+
+#messages li {
+  list-style: none;
+  border-color: rgba(0, 0, 0, 0.054);
+  border-style: solid;
+  border-width: 2px;
+  padding: 1em;
+  border-radius: 2em;
+  box-shadow: 0.3em -0.3em rgba(209, 206, 206, 0.131);
+  margin-bottom: 1em;
+}
+
+button:hover {
+  background-color: rgb(175, 86, 242);
+  color: white;
+  transition: 0.3s;
+}
+
+footer {
+  text-align: center;
+}
+
+#messages li button {
+  width: 20%;
+  margin-right: 1em;
+}
