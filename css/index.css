@@ -1,23 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --blue-accent-color: rgb(123, 197, 243);
+  --dark-blue-contrast-color: rgb(10, 104, 255);
+  --violet-accent-color: rgb(175, 86, 242);
+  --dark-violet-contrast-color: purple;
+}
+
 body {
   background: url(../img/seattle.jpg) no-repeat center center/cover;
   height: 100vh;
   background-color: black;
-
   font-family: "Ysabeau Infant", sans-serif;
-}
-
-h1 {
-  font-weight: bold;
-  font-size: 2rem;
-}
-
-h2 {
-  font-size: 1.75rem;
-}
-
-#name {
-  font-family: "Dancing Script", cursive;
-  font-size: 3rem;
 }
 
 #page-wrapper {
@@ -29,9 +25,37 @@ h2 {
   padding: 2em;
 }
 
+h1 {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+a {
+  color: var(--blue-accent-color);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--violet-accent-color);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#name {
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+}
+
 #profile-picture {
   border-radius: 50%;
   margin: 1em;
+  min-width: 130px;
   width: 30%;
 }
 
@@ -41,6 +65,7 @@ header {
   text-align: center;
   margin: 4em;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 nav ul {
@@ -54,31 +79,40 @@ nav ul {
 /* Basic form styling */
 
 input,
-textarea {
-  appearance: none;
-  font-family: inherit;
-  font-size: 100%;
-  padding: 0.3em;
-  margin: 0;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  border-radius: 1em;
-}
-
+textarea,
 button {
   appearance: none;
   font-family: inherit;
   font-size: 100%;
   padding: 0.3em;
   margin: 0;
-  width: 25%;
   border-radius: 1em;
+}
+
+input,
+textarea {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+button {
+  width: 25%;
   border-color: rgba(0, 0, 0, 0.194);
-  background-color: rgb(123, 197, 243);
+  background-color: var(--blue-accent-color);
   color: whitesmoke;
 }
+
+button:hover {
+  background-color: var(--violet-accent-color);
+  transition: 0.3s;
+}
+
+button:disabled {
+  background-color: gray;
+}
+
+/* end form styling  */
 
 #message-section {
   background-color: whitesmoke;
@@ -99,55 +133,36 @@ button {
   margin-bottom: 1em;
 }
 
-button:hover {
-  background-color: rgb(175, 86, 242);
-  color: white;
-  transition: 0.3s;
-}
-
-footer {
-  text-align: center;
-}
-
 #messages li button {
   width: 20%;
   margin-right: 1em;
 }
 
-#experience ul li {
-  list-style: none;
-  display: inline-block;
-  margin: 0.5em;
-  background-color: rgb(123, 197, 243);
-  color: whitesmoke;
-  padding: 0.5em;
-  border-radius: 0.6em;
-  border-color: rgb(10, 104, 255);
-  border-style: solid;
-}
-
+#experience ul li,
 #skills ul li {
   list-style: none;
   display: inline-block;
-  background-color: rgb(175, 86, 242);
-  color: whitesmoke;
-  padding: 0.5em;
   margin: 0.5em;
+  padding: 0.5em;
   border-radius: 0.6em;
-  border-color: purple;
   border-style: solid;
 }
 
+#experience ul li {
+  background-color: var(--blue-accent-color);
+  border-color: var(--dark-blue-contrast-color);
+}
+
+#skills ul li {
+  background-color: var(--violet-accent-color);
+  border-color: var(--dark-violet-contrast-color);
+}
+
+#experience ul li:hover,
 #skills ul li:hover {
-  font-size: 1.2rem;
-  transition: 0.3s;
+  transform: scale(1.1);
 }
 
-#experience ul li:hover {
-  font-size: 1.2rem;
-  transition: 0.3s;
-}
-
-button:disabled {
-  background-color: gray;
+footer {
+  text-align: center;
 }
