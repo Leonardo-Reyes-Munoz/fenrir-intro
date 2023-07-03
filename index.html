@@ -7,24 +7,36 @@
     <meta name="keywords" content="HTML, CSS, JavaScript" />
     <meta name="author" content="Leonardo Reyes" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/index.css" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Ysabeau+Infant:ital,wght@0,300;1,300&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- wrapper div-->
-    <div>
+    <div id="page-wrapper">
       <header>
-        <h1>Leonardo Reyes</h1>
-        <nav>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#connect">Connect</a></li>
-          </ul>
-        </nav>
         <img
           src="img/portfolio2.jpg"
           alt="profile picture of leonardo"
           width="300"
+          id="profile-picture"
         />
+        <section id="sub-header">
+          <h1 id="name">Leonardo Reyes</h1>
+          <nav>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#experience">Experience</a></li>
+              <li><a href="#connect">Connect</a></li>
+            </ul>
+          </nav>
+        </section>
       </header>
 
       <section id="about">
@@ -120,7 +132,7 @@
           <button type="submit" value="submit" name="submit">Submit</button>
         </form>
       </section>
-      <section>
+      <section id="message-section">
         <h2>Messages</h2>
         <ul id="messages"></ul>
       </section>
