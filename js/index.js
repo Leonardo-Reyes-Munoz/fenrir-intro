@@ -164,3 +164,26 @@ messages.addEventListener("click", (e) => {
     buttonActions[button](e);
   }
 });
+
+//Lesson 6-1: AJAX //
+const githubRequest = new XMLHttpRequest();
+githubRequest.open(
+  "GET",
+  "https://api.github.com/users/Leonardo-Reyes-Munoz/repos"
+);
+githubRequest.send();
+githubRequest.onload = () => {
+  repositories = JSON.parse(githubRequest.response);
+  console.log(repositories);
+
+  const projectSection = document.getElementById("projects");
+  const projectList = projectSection.querySelector("ul");
+  for (let i = 0; i < repositories.length; i++) {
+    const project = document.createElement("li");
+    const projectLink = document.createElement("a");
+    projectLink.setAttribute("href", `${repositories[i].html_url}`);
+    projectLink.innerText = `${repositories[i].name} : ${repositories[i].description}`;
+    project.appendChild(projectLink);
+    projectList.appendChild(project);
+  }
+};

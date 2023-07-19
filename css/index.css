@@ -3,10 +3,14 @@
 }
 
 :root {
-  --blue-accent-color: rgb(123, 197, 243);
-  --dark-blue-contrast-color: rgb(10, 104, 255);
-  --violet-accent-color: rgb(175, 86, 242);
-  --dark-violet-contrast-color: purple;
+  --primary-color: rgb(123, 197, 243);
+  --primary-color-contrast: rgb(10, 104, 255);
+  --secondary-color: rgb(175, 86, 242);
+  --secondary-color-contrast: purple;
+  --tertiary-color: #e45ded;
+  --tertiary-color-contrast: #c84fd1;
+  --quaternary-color: #ffb6ff;
+  --quaternary-color-contrast: #e9a8e9;
 }
 
 body {
@@ -35,12 +39,12 @@ h2 {
 }
 
 a {
-  color: var(--blue-accent-color);
+  color: var(--primary-color);
   text-decoration: none;
 }
 
 a:visited {
-  color: var(--violet-accent-color);
+  color: var(--secondary-color);
 }
 
 a:hover {
@@ -99,12 +103,12 @@ textarea {
 button {
   width: 50%;
   border-color: rgba(0, 0, 0, 0.194);
-  background-color: var(--blue-accent-color);
+  background-color: var(--primary-color);
   color: whitesmoke;
 }
 
 button:hover {
-  background-color: var(--violet-accent-color);
+  background-color: var(--secondary-color);
   transition: 0.3s;
 }
 
@@ -149,12 +153,14 @@ button:disabled {
 }
 
 #experience ul,
-#skills ul {
+#skills ul,
+#projects ul {
   display: flex;
   flex-wrap: wrap;
 }
 #experience ul li,
-#skills ul li {
+#skills ul li,
+#projects ul li {
   display: flex;
   margin: 0.5em;
   padding: 0.5em;
@@ -166,17 +172,30 @@ button:disabled {
 }
 
 #experience ul li {
-  background-color: var(--blue-accent-color);
-  border-color: var(--dark-blue-contrast-color);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color-contrast);
 }
 
 #skills ul li {
-  background-color: var(--violet-accent-color);
-  border-color: var(--dark-violet-contrast-color);
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color-contrast);
+}
+
+#projects ul li {
+  background-color: var(--tertiary-color);
+  border-color: var(--tertiary-color-contrast);
+}
+
+#projects a {
+  color: white;
+}
+#projects a:visited {
+  color: var(--quaternary-color);
 }
 
 #experience ul li:hover,
-#skills ul li:hover {
+#skills ul li:hover,
+#projects ul li:hover {
   transform: scale(1.1);
 }
 
