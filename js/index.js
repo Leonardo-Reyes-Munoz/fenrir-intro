@@ -1,12 +1,15 @@
-// Lesson 4.2
+// Lesson 4.2 Footer
 let currentDate = new Date();
 let thisYear = currentDate.getFullYear();
 
-const footer = document.querySelector("footer");
-const copyright = document.createElement("p");
-copyright.innerHTML = `<small>Leonardo Reyes &copy; ${thisYear}</small>`;
+const copyrightParagraph = document.getElementById("copyright");
 
-footer.appendChild(copyright);
+const copyright = document.createElement("p");
+copyright.setAttribute("class", "copyright");
+copyright.innerHTML = `<small>Leonardo Reyes &copy; ${thisYear}</small>`;
+copyrightParagraph.appendChild(copyright);
+
+// Skills Section
 
 let skills = ["Management Experience", "JavaScript", "CSS", "HTML"];
 
@@ -165,25 +168,31 @@ messages.addEventListener("click", (e) => {
   }
 });
 
-//Lesson 6-1: AJAX //
-const githubRequest = new XMLHttpRequest();
-githubRequest.open(
-  "GET",
-  "https://api.github.com/users/Leonardo-Reyes-Munoz/repos"
-);
-githubRequest.send();
-githubRequest.onload = () => {
-  repositories = JSON.parse(githubRequest.response);
-  console.log(repositories);
+fetch("https://api.github.com/users/Leonardo-Reyes-Munoz/repos")
+  .then((repositories) => repositories.json())
+  .then((repositories) => {
+    console.log(repositories);
 
-  const projectSection = document.getElementById("projects");
-  const projectList = projectSection.querySelector("ul");
-  for (let i = 0; i < repositories.length; i++) {
-    const project = document.createElement("li");
-    const projectLink = document.createElement("a");
-    projectLink.setAttribute("href", `${repositories[i].html_url}`);
-    projectLink.innerText = `${repositories[i].name} : ${repositories[i].description}`;
-    project.appendChild(projectLink);
-    projectList.appendChild(project);
-  }
-};
+    const projectSection = document.getElementById("projects");
+    const projectList = projectSection.querySelector("ul");
+    for (let i = 0; i < repositories.length; i++) {
+      const project = document.createElement("li");
+      project.setAttribute("class", "card");
+      const projectName = document.createElement("h3");
+      projectName.innerText = `${repositories[i].name}`;
+      project.appendChild(projectName);
+      const projectDescription = document.createElement("p");
+      projectDescription.innerText = `${repositories[i].description}`;
+      project.appendChild(projectDescription);
+      const projectLink = document.createElement("a");
+      projectLink.setAttribute("href", `${repositories[i].html_url}`);
+      const codeBtn = document.createElement("button");
+      codeBtn.innerText = "See Code";
+      projectLink.appendChild(codeBtn);
+      project.appendChild(projectLink);
+      projectList.appendChild(project);
+    }
+  })
+  .catch((error) =>
+    console.log("Looks like was a problem with API request!", error)
+  );
