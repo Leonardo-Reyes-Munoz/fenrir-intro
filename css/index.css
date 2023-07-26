@@ -131,7 +131,8 @@ button:disabled {
   margin-bottom: 3em;
 }
 
-#messages li {
+#messages li,
+#messages form {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -226,19 +227,19 @@ footer {
   padding-left: 2rem;
 }
 
+footer a {
+  color: whitesmoke;
+}
+footer a:visited {
+  color: whitesmoke;
+}
+
 #copyright {
   margin: 0 auto;
 }
 
 .material-symbols-rounded {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
-}
-
-footer a {
-  color: whitesmoke;
-}
-footer a:visited {
-  color: whitesmoke;
 }
 
 /* Tablet screen formatting */
