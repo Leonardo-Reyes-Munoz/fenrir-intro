@@ -7,10 +7,6 @@
   --primary-color-contrast: rgb(10, 104, 255);
   --secondary-color: rgb(175, 86, 242);
   --secondary-color-contrast: purple;
-  --tertiary-color: #e45ded;
-  --tertiary-color-contrast: #c84fd1;
-  --quaternary-color: #ffb6ff;
-  --quaternary-color-contrast: #e9a8e9;
 }
 
 body {
