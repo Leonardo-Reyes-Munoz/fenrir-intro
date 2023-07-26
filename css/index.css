@@ -3,10 +3,10 @@
 }
 
 :root {
-  --primary-color: rgb(123, 197, 243);
-  --primary-color-contrast: rgb(10, 104, 255);
-  --secondary-color: rgb(175, 86, 242);
-  --secondary-color-contrast: purple;
+  --primary-color: rgb(52, 144, 201);
+  --primary-color-contrast: #04c8e2;
+  --secondary-color: rgb(136, 32, 240);
+  --secondary-color-contrast: rgb(202, 28, 250);
 }
 
 body {
