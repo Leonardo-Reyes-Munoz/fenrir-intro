@@ -3,9 +3,9 @@
 }
 
 :root {
-  --primary-color: hsl(203, 100%, 52%);
+  --primary-color: #435cff;
   --primary-color-contrast: rgb(10, 206, 255);
-  --secondary-color: rgb(193, 69, 255);
+  --secondary-color: #a146eb;
   --secondary-color-contrast: rgb(236, 45, 243);
 }
 
@@ -171,7 +171,6 @@ button:disabled {
 }
 
 .job:hover > .job-description {
-  color: yellow;
   display: block;
 }
 
