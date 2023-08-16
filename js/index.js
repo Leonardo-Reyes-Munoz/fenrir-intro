@@ -88,7 +88,7 @@ messages.addEventListener("submit", (e) => {
   }
 });
 
-// Event listener to execute remove, edit, and save buttons.
+// Event listener to execute remove and edit buttons.
 messages.addEventListener("click", (e) => {
   if (e.target.type === "button") {
     const button = e.target.innerText;
@@ -107,8 +107,6 @@ messages.addEventListener("click", (e) => {
       edit: () => {
         let form = document.getElementById("message-form");
         let newNode = form.cloneNode(true);
-        console.log(newNode);
-
         const entryAnchorTag = entry.querySelector("a");
         const entryMessage = entry.querySelector("p");
         let email = entry.querySelector("a").getAttribute("href");
@@ -123,7 +121,6 @@ messages.addEventListener("click", (e) => {
         for (let i = 0; i < allButtons.length; i++) {
           allButtons[i].disabled = true;
         }
-        // e.target.innerText = "save";
         newNode.submit.disabled = false;
       },
     };
